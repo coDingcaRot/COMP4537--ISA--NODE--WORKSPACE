@@ -14,7 +14,7 @@ http.createServer((req, res) => {
         lab_handler.lab3_activate(req, res);
         return;
     }else{
-        res.writeHead(400, {'Content-Type': 'text/html'})
+        res.writeHead(404, {'Content-Type': 'text/html'})
         res.write(
             `<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw;">
                 <h1 style="color: red; text-align: center;">${msg.badReqMsg}</h1>
