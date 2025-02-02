@@ -1,9 +1,9 @@
 // Writefile
-const http = require('http');
 const url = require('url');
 const fs = require('fs');
+const path = require('path');
 
-http.createServer((req, res) => {
+exports.writeFile_res = (req, res) => {
     const q = url.parse(req.url, true);
     let text = q.query.text;
 
@@ -16,7 +16,9 @@ http.createServer((req, res) => {
         return;
     }
 
-    fs.appendFile('file.txt', `${text}\n`, (err) => {
+    const filePath = path.join(__dirname, 'file.txt');
+
+    fs.appendFile(filePath, `${text}\n`, (err) => {
         if (err) {
             res.writeHead(500, { 'Content-Type': 'text/plain' }); // Internal Server Error
             res.write('Error occurred, text not written.\n');
@@ -28,7 +30,5 @@ http.createServer((req, res) => {
         }
     });
 
-}).listen(8500);
-
-console.log('Running server.js ...')
+}
 

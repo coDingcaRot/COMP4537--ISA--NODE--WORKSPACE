@@ -1,15 +1,14 @@
-const http = require('http');
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
 
-http.createServer((req, res) => {
+exports.readFile_res = (req, res) => {
     const q = url.parse(req.url, true);
     const filename = path.basename(q.pathname); // The file you want to display
 
     // Define the path to 'file.txt' in the writeFile folder
     const filePath = path.join(__dirname, '../writeFile', filename);
-
+    
     // Check if the file exists
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
@@ -22,7 +21,4 @@ http.createServer((req, res) => {
             res.end();
         }
     });
-
-}).listen(8000);
-
-console.log('Server running ...');
+}
