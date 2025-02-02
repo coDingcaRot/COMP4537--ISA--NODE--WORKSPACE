@@ -1,3 +1,5 @@
+//ChatGPT was used to fix issues regarding file path directory and setup as well as package.json setup for digital ocean to recognize the paths
+
 const http = require('http'); //server creation
 let url = require('url'); // url parsing
 let msg = require('./lang/en/en.js')
