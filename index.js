@@ -7,6 +7,7 @@ let msg = require('./lang/en/en.js')
 const lab_handler = require('./COMP4537/labs/lab_handler.js')
 
 const lab3_path = '/COMP4537/labs/3'
+const lab4_path = '/COMP4537/labs/4/api/definition'
 
 //Centralized Server call
 http.createServer((req, res) => {
@@ -15,6 +16,9 @@ http.createServer((req, res) => {
     if(url.includes(lab3_path)){
         lab_handler.lab3_activate(req, res);
         return;
+    } else if(url.includes(lab4_path)){ //lab 4 AJAX call
+        lab_handler.lab4_activate(req, res);
+        return
     }else{
         res.writeHead(404, {'Content-Type': 'text/html'})
         res.write(
